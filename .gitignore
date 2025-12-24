@@ -1,0 +1,32 @@
+# Lua
+*.luac
+
+# Logs
+*.log
+logs/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Editor/IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# REFramework
+reframework/data/
+*.tmp
+
+# Local config overrides
+config.local.lua
