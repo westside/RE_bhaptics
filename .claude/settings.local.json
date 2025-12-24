@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\sangwon\\\\Downloads\\\\files\\\\scripts\\\\install\\\\install_for_nonvr.ps1\" -GamePath \"D:\\\\SteamLibrary\\\\steamapps\\\\common\\\\RESIDENT EVIL 7 biohazard Demo\" -Force)",
+      "Bash(New-Item -ItemType Directory -Path \"D:\\\\SteamLibrary\\\\steamapps\\\\common\\\\RESIDENT EVIL 7 biohazard Demo\\\\reframework\\\\autorun\" -Force)",
+      "Bash(powershell:*)"
+    ]
+  }
+}

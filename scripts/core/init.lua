@@ -15,13 +15,10 @@ local MOD_AUTHOR = "Your Name"
 -- Module Loading
 -- ============================================
 
--- Core 모듈 경로 설정
-package.path = package.path .. ";reframework/autorun/?.lua"
-
--- Core 모듈 로드
-local logger = require("core/logger")
-local event_bus = require("core/event_bus")
-local config = require("core/config")
+-- Core 모듈 로드 (autorun 폴더 기준)
+local logger = require("logger")
+local event_bus = require("event_bus")
+local config = require("config")
 
 -- 설정 초기화
 config.init()
@@ -39,18 +36,18 @@ local game_config = nil
 
 logger.info("Detected game: " .. game_name)
 
--- 게임별 설정 로드
+-- 게임별 설정 로드 (autorun 폴더 기준)
 if game_name == "re7" then
-    local success, cfg = pcall(require, "games/re7")
+    local success, cfg = pcall(require, "re7")
     if success then game_config = cfg end
 elseif game_name == "re8" then
-    local success, cfg = pcall(require, "games/re8")
+    local success, cfg = pcall(require, "re8")
     if success then game_config = cfg end
 elseif game_name == "re2" then
-    local success, cfg = pcall(require, "games/re2")
+    local success, cfg = pcall(require, "re2")
     if success then game_config = cfg end
 elseif game_name == "re4" then
-    local success, cfg = pcall(require, "games/re4")
+    local success, cfg = pcall(require, "re4")
     if success then game_config = cfg end
 end
 
@@ -71,7 +68,7 @@ local weapon_detector = nil
 local cinematic_detector = nil
 
 -- 체력 감지기
-local success, hd = pcall(require, "detectors/health_detector")
+local success, hd = pcall(require, "health_detector")
 if success then
     health_detector = hd
     health_detector.init(game_config, event_bus, config, logger)
@@ -80,7 +77,7 @@ else
 end
 
 -- 피격 감지기
-local success, dd = pcall(require, "detectors/damage_detector")
+local success, dd = pcall(require, "damage_detector")
 if success then
     damage_detector = dd
     damage_detector.init(game_config, event_bus, config, logger)
@@ -89,7 +86,7 @@ else
 end
 
 -- 무기 감지기
-local success, wd = pcall(require, "detectors/weapon_detector")
+local success, wd = pcall(require, "weapon_detector")
 if success then
     weapon_detector = wd
     weapon_detector.init(game_config, event_bus, config, logger)
@@ -98,7 +95,7 @@ else
 end
 
 -- 시네마틱/진행상태 감지기
-local success, cd = pcall(require, "detectors/cinematic_detector")
+local success, cd = pcall(require, "cinematic_detector")
 if success then
     cinematic_detector = cd
     cinematic_detector.init(game_config, event_bus, config, logger)
